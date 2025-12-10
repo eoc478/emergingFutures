@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import PacketScreen from "./PacketScreen";
 import Card from "./Models/Card";
+import Packet from "./Models/Packet";
 
 export default function ScrollPackets() {
 //storing list of packets
@@ -73,7 +74,7 @@ export default function ScrollPackets() {
           }}
         >
          {/* <PacketScreen id={packet.id} tier={packet.tier} /> */}
-         <Card tier={packet.tier} />
+         <Packet tier={packet.tier} />
         </div>
       ))}
     </div>
