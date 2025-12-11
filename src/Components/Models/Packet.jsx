@@ -3,10 +3,13 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import packet from "/models/scene.gltf?url";
+import uvText from "/assets/uvtexture.png";
+import mog from "/assets/kingofthepond.jpg";
 
 //i had to use chatGPT for this omg nothing would load this 3d model
 export default function Packet() {
     const mountRef = useRef(null);
+    const modelRef = useRef(null);
 
     useEffect(() => {
         const mount = mountRef.current;
@@ -38,10 +41,31 @@ export default function Packet() {
         dl.position.set(5, 5, 5);
         scene.add(dl);
 
+        // Load Texture
+        const textureLoader = new THREE.TextureLoader();
+        const texture = textureLoader.load(mog, 
+            // onLoad callback
+            () => {
+                console.log('Texture loaded successfully');
+            },
+            // onProgress callback
+            undefined,
+            // onError callback
+            (error) => {
+                console.error('Error loading texture:', error);
+            }
+        );
+
+        texture.flipY = false; // GLTF models usually need this
+        texture.colorSpace = THREE.SRGBColorSpace; // For correct color representation
+        texture.wrapS = THREE.RepeatWrapping; // Uncomment if you need wrapping
+        texture.wrapT = THREE.RepeatWrapping;
+
         // Load GLTF
         const loader = new GLTFLoader();
         loader.load(packet, (gltf) => {
             const model = gltf.scene;
+            modelRef.current = model;
             scene.add(model);
 
             model.scale.set(1, 1, 1);
@@ -49,6 +73,17 @@ export default function Packet() {
             model.traverse((obj) => {
                 if (obj.isMesh) {
                     obj.material.side = THREE.DoubleSide;
+                }
+            });
+
+            // Apply texture to all meshes
+            model.traverse((obj) => {
+                if (obj.isMesh) {
+                    obj.material.side = THREE.DoubleSide;
+                    
+                    // Apply the UV texture
+                    obj.material.map = texture;
+                    obj.material.needsUpdate = true; // Important: tell Three.js to update the material
                 }
             });
 
@@ -61,11 +96,13 @@ export default function Packet() {
             camera.position.z += size.length();
             camera.lookAt(center);
 
-            // const helper = new THREE.Box3Helper(box, 0xff0000);
-            // scene.add(helper);
         });
 
         const animate = () => {
+            if (modelRef.current) {
+                modelRef.current.rotation.y += 0.01;
+            }
+            
             requestAnimationFrame(animate);
             controls.update();
             renderer.render(scene, camera);

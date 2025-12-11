@@ -1,6 +1,8 @@
 import React , { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import uvText from "/assets/uvtexture.png";
 
 
 export default function Card( {tier} ){
@@ -41,8 +43,9 @@ export default function Card( {tier} ){
         ];
 
         //---------------------geometry
+        const uvTexture = new THREE.TextureLoader().load(uvText);
         const geometry = new RoundedBoxGeometry(20, 30, .5, 2, 5);
-        const material = new THREE.MeshStandardMaterial( { color: 0x00ff00 } );
+        const material = new THREE.MeshStandardMaterial( { map: uvTexture } );
         const cube = new THREE.Mesh( geometry, material );
         scene.add( cube );
 

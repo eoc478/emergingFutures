@@ -1,3 +1,19 @@
 body{
   margin: 0;
 }
+
+.container{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.packetContainer{
+  position: absolute;
+  z-index: 1;
+}
+
+.cardContainer{
+  position: absolute;
+  z-index: 0;
+}

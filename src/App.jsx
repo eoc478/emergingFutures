@@ -7,9 +7,25 @@ import Packet from "./Components/Models/Packet"
 
 function App() {
   const [start, setStart] = useState(false);
+  const [tapCount, setTapCount] = useState(0);
+  const [showPacket, setShowPacket] = useState(true);
+
+  const maxTaps = 15;
 
   const handleStart = () => {
     setStart(true);
+  };
+
+  const handleTap = () =>{
+    if(tapCount < maxTaps){
+      setTapCount(prev => prev + 1);
+    }
+
+    if (tapCount + 1 >= maxTaps) {
+        setTimeout(() => {
+          setShowPacket(false);
+        }, 300); //300ms delay
+      }
   };
 
   return (
@@ -18,7 +34,19 @@ function App() {
       {!start ? (
         <Home onStart={handleStart} />
       ) : (
-        <Packet />
+        <div className="container" onClick={handleTap}>
+          
+          {showPacket && (
+            <div className="packetContainer">
+              <Packet />
+            </div>
+          )};
+
+          <div className="cardContainer">
+            <Card />
+          </div>
+          
+        </div>
       )}
     </>
 
