@@ -1,0 +1,296 @@
+{
+    "packet1": {
+        "name": "food",
+        "tier": "0",
+        "texture": "/assets/cards/packet1/packet1.png",
+        "cards": [
+            {
+                "id": "p1c1",
+                "name": "sushi",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/mog.jpg"
+            },
+            {
+                "id": "p1c2",
+                "name": "steak",
+                "rarity": "rare",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c3",
+                "name": "pasta",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c4",
+                "name": "friedrice",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c5",
+                "name": "cupnoodles",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c6",
+                "name": "sandwich",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c7",
+                "name": "fruit",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            }
+        ]
+    },
+    "packet2": {
+        "name": "activities",
+        "tier": "1",
+        "texture": "/assets/cards/packet2/packet2.png",
+        "cards": [
+            {
+                "id": "p2c1",
+                "name": "sushi",
+                "rarity": "common",
+                "texture": "/assets/cards/packet2/sushi.png"
+            },
+            {
+                "id": "p2c2",
+                "name": "steak",
+                "rarity": "rare",
+                "texture": "/assets/cards/packet2/sushi.png"
+            },
+                        {
+                "id": "p2c3",
+                "name": "pasta",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p2c4",
+                "name": "friedrice",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p2c5",
+                "name": "cupnoodles",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c6",
+                "name": "sandwich",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c7",
+                "name": "fruit",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            }
+        ]
+    },
+    "packet3": {
+        "name": "dress",
+        "tier": "2",
+        "texture": "/assets/cards/packet3/packet3.png",
+        "cards": [
+            {
+                "id": "p1c1",
+                "name": "sushi",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+            {
+                "id": "p1c2",
+                "name": "steak",
+                "rarity": "rare",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c3",
+                "name": "pasta",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c4",
+                "name": "friedrice",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c5",
+                "name": "cupnoodles",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c6",
+                "name": "sandwich",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c7",
+                "name": "fruit",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            }
+        ]
+    },
+    "packet4": {
+        "name": "occupation",
+        "tier": "3",
+        "texture": "/assets/cards/packet4/packet4.png",
+        "cards": [
+            {
+                "id": "p1c1",
+                "name": "sushi",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+            {
+                "id": "p1c2",
+                "name": "steak",
+                "rarity": "rare",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c3",
+                "name": "pasta",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c4",
+                "name": "friedrice",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c5",
+                "name": "cupnoodles",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c6",
+                "name": "sandwich",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c7",
+                "name": "fruit",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            }
+        ]
+    },
+    "packet5": {
+        "name": "mood",
+        "tier": "4",
+        "texture": "/assets/cards/packet5/packet5.png",
+        "cards": [
+            {
+                "id": "p1c1",
+                "name": "sushi",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+            {
+                "id": "p1c2",
+                "name": "steak",
+                "rarity": "rare",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c3",
+                "name": "pasta",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c4",
+                "name": "friedrice",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c5",
+                "name": "cupnoodles",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c6",
+                "name": "sandwich",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c7",
+                "name": "fruit",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            }
+        ]
+    },
+    "packet6": {
+        "name": "questions",
+        "tier": "5",
+        "texture": "/assets/cards/packet6/packet6.png",
+        "cards": [
+            {
+                "id": "p1c1",
+                "name": "sushi",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+            {
+                "id": "p1c2",
+                "name": "steak",
+                "rarity": "rare",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c3",
+                "name": "pasta",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c4",
+                "name": "friedrice",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c5",
+                "name": "cupnoodles",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c6",
+                "name": "sandwich",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            },
+                        {
+                "id": "p1c7",
+                "name": "fruit",
+                "rarity": "common",
+                "texture": "/assets/cards/packet1/sushi.png"
+            }
+        ]
+    }
+}

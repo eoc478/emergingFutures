@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import packet from "/models/scene.gltf?url";
+import packet from "/models/packet1.gltf?url";
 import uvText from "/assets/uvtexture.png";
 import mog from "/assets/kingofthepond.jpg";
 
-//i had to use chatGPT for this omg nothing would load this 3d model
+//i had to use chatGPT for this omg nothing would load this 3d model or the material
 export default function Packet() {
     const mountRef = useRef(null);
     const modelRef = useRef(null);
@@ -20,12 +20,12 @@ export default function Packet() {
 
         // Camera
         const camera = new THREE.PerspectiveCamera(
-            50,
+            70,
             window.innerWidth / window.innerHeight,
-            0.1,
+            1,
             1000
         );
-        camera.position.set(0, 1, 5);
+        camera.position.set(0, 0, 5);
 
         // Renderer
         const renderer = new THREE.WebGLRenderer({ antialias: true });

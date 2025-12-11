@@ -2,10 +2,10 @@ import React , { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
-import uvText from "/assets/uvtexture.png";
+import uvText from "/assets/cards/packet1/cards_03.png";
 
 
-export default function Card( {tier} ){
+export default function Card( ){
     const mountRef = useRef(null); //will be used to place 3js scene
 
     useEffect(() => {
@@ -32,21 +32,19 @@ export default function Card( {tier} ){
         ambientLight.castShadow = true;
         scene.add(ambientLight);
 
-        //---------------------color---------------------
-        const tierColors = [
-            0xff5555, // tier 0 = red-ish
-            0xffaa00, // tier 1 = orange/gold
-            0xffff00, // tier 2 = yellow
-            0x55ff55, // tier 3 = green
-            0x5555ff, // tier 4 = blue
-            0xaa00ff, // tier 5 = purple
-        ];
+        // White directional light at half intensity shining from the top.
+        const directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
+        directionalLight.position.set(0, 50, 50);
+        directionalLight.castShadow = true;
+        scene.add( directionalLight );
+
 
         //---------------------geometry
         const uvTexture = new THREE.TextureLoader().load(uvText);
         const geometry = new RoundedBoxGeometry(20, 30, .5, 2, 5);
         const material = new THREE.MeshStandardMaterial( { map: uvTexture } );
         const cube = new THREE.Mesh( geometry, material );
+        uvTexture.colorSpace = THREE.SRGBColorSpace;
         scene.add( cube );
 
         const animate = () => {
@@ -79,6 +77,6 @@ export default function Card( {tier} ){
             material.dispose();
             renderer.dispose();
         };
-    }, [tier]);
+    }, []);
     return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
 }

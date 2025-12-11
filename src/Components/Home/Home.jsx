@@ -4,7 +4,7 @@ import "./home.css";
 export default function Home({onStart}){
     return (
         <div className="container">
-            <h1>ch//ce</h1>
+            <h1>choice</h1>
             <p>blah blah blah</p>
 
             <button className="btn" onClick={onStart}>start</button>

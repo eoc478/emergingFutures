@@ -1,25 +1,30 @@
-import React from "react";
+// import {useState} from "react";
+// import './PacketScreen.css';
+// import Packet from "./Models/Packet";
+// import Card from "./Models/Card";
 
-export default function PacketScreen({ id, tier }) {
-  return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        background: "#111",
-        color: "#fff",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "2rem"
-      }}
-    >
-      <div>Packet #{id}</div>
-      <div>Tier {tier}</div>
-      <div style={{ marginTop: "20px", fontSize: "1.2rem" }}>
-        (3D packet placeholder)
-      </div>
-    </div>
-  );
-}
+// export default function PacketScreen({tier, isUnlocked, PacketOpened}){
+//   const [tapCount, setTapCount] = useState(0);
+//   const [showPacket, setShowPacket] = useState(true);
+//   const [thump, setThump] = useState(false);
+
+//   const maxTaps = 15;
+
+//   const handleTap = () =>{
+//     if (!isUnlocked || !showPacket) return;
+
+//     if(tapCount < maxTaps){
+//       setTapCount(prev => prev + 1);
+//     }
+
+//     const card = { name: `Tier ${tier} Card`, rarity: "rare" };
+//         setRevealedCard(card);
+
+//     if (tapCount + 1 >= maxTaps) {
+//         setThump(true);
+//         setTimeout(() => {
+//           setShowPacket(false);
+//         }, 50); //ms delay
+//       }
+//   };
+// }
