@@ -2,14 +2,34 @@ import React , { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
-import uvText from "/assets/cards/packet1/cards_03.png";
+import card1 from "/assets/cards/packet1/EFcard_p1c1.png";
+import card2 from "/assets/cards/packet1/EFcard_p1c2.png";
+import card3 from "/assets/cards/packet1/EFcard_p1c3.png";
+import card4 from "/assets/cards/packet1/EFcard_p1c4.png";
+import card5 from "/assets/cards/packet1/EFcard_p1c5.png";
+import card6 from "/assets/cards/packet1/EFcard_p1c6.png";
+import card7 from "/assets/cards/packet1/EFcard_p1c7.png";
 
 
-export default function Card( ){
+export default function Card({packetTier} ){
     const mountRef = useRef(null); //will be used to place 3js scene
 
     useEffect(() => {
         const mount = mountRef.current;
+
+        //--------------------load textures--------------------
+        const cardTextures = [
+            card1,
+            card2,
+            card3,
+            card4,
+            card5,
+            card6,
+            card7,
+        ];
+
+        const randomCard =
+            cardTextures[Math.floor(Math.random() * cardTextures.length)];
 
         const scene = new THREE.Scene();
 
@@ -40,7 +60,7 @@ export default function Card( ){
 
 
         //---------------------geometry
-        const uvTexture = new THREE.TextureLoader().load(uvText);
+        const uvTexture = new THREE.TextureLoader().load(randomCard);
         const geometry = new RoundedBoxGeometry(20, 30, .5, 2, 5);
         const material = new THREE.MeshStandardMaterial( { map: uvTexture } );
         const cube = new THREE.Mesh( geometry, material );
@@ -77,6 +97,6 @@ export default function Card( ){
             material.dispose();
             renderer.dispose();
         };
-    }, []);
+    }, [packetTier]);
     return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
 }

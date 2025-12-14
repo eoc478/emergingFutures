@@ -7,7 +7,7 @@ import uvText from "/assets/uvtexture.png";
 import mog from "/assets/kingofthepond.jpg";
 
 //i had to use chatGPT for this omg nothing would load this 3d model or the material
-export default function Packet() {
+export default function Packet({packetTier}) {
     const mountRef = useRef(null);
     const modelRef = useRef(null);
 
@@ -113,7 +113,7 @@ export default function Packet() {
             mount.removeChild(renderer.domElement);
             renderer.dispose();
         };
-    }, []);
+    }, [packetTier]);
 
     return <div ref={mountRef} style={{ width: "100vw", height: "100vh" }} />;
 }

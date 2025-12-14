@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Home from "./Components/Home/Home"
 import Card from "./Components/Models/Card"
@@ -25,6 +25,7 @@ function App() {
   const [tapCount, setTapCount] = useState(0);
   const [showPacket, setShowPacket] = useState(true);
   const [thump, setThump] = useState(false);
+  const [packetTier, setPacketTier] = useState(0);
 
   const maxTaps = 15;
 
@@ -48,25 +49,42 @@ function App() {
       }
   };
 
+  //resets every time for the next packet and card
+  const nextPacket = () => {
+    setPacketTier(prev => prev + 1);
+    setTapCount(0);
+    setShowPacket(true);
+    setThump(false);
+  }
+
+  useEffect(() => {
+  const handleScroll = (e) => {
+    if (!showPacket) {
+     nextPacket();
+    }
+  };
+
+  window.addEventListener("wheel", handleScroll);
+  return () => window.removeEventListener("wheel", handleScroll);
+}, [showPacket]);
+
   return (
     <>
     {/* had to learn what ternary operaters are */}
       {!start ? (
         <Home onStart={handleStart} />
       ) : (
-        <div className="container" onClick={handleTap}>
-          
-          {showPacket && (
-            <div className={`packetContainer ${thump ? 'thump' : ''}`}>
-              <Packet />
-            </div>
-          )};
-
-          <div className="cardContainer">
-            <Card />
+      <div className="container" onClick={handleTap}>
+        {showPacket && (
+          <div className={`packetContainer ${thump ? 'thump' : ''}`}>
+            <Packet />
           </div>
-          
+        )};
+
+        <div className="cardContainer">
+          <Card packetTier={packetTier}/>
         </div>
+      </div>
       )}
     </>
 
