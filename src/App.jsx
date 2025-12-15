@@ -27,7 +27,7 @@ function App() {
   const [thump, setThump] = useState(false);
   const [packetTier, setPacketTier] = useState(0);
 
-  const maxTaps = 15;
+  const maxTaps = 5;
 
   // const packetData = getRandomPacket(0);
   // const cardData = getRandomCard(packetData);
