@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'SnapIt';
+  src: url('/assets/snapit.otf') format('opentype');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}
+
 body{
   margin: 0;
   background: black;
@@ -31,7 +39,10 @@ body{
   justify-content: center;
   align-items: flex-end;
   z-index: 1;
-  padding-bottom: 5%
+  padding-bottom: 5%;
+  opacity: 0;
+  animation: fadeIn 10s ease-in-out forwards;
+
 }
 
 .packetContainer.thump {
@@ -60,6 +71,15 @@ body{
   }
   100% {
     transform: translateY(-100%);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
   }
 }

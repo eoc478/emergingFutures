@@ -1,6 +1,14 @@
 @font-face {
   font-family: 'Meyrin';
-  src: url('./assets/Meyrin.ttf') format('truetype');
+  src: url('/assets/Meyrin.ttf') format('truetype');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SnapIt';
+  src: url('/assets/snapit.otf') format('opentype');
   font-display: swap;
   font-weight: normal;
   font-style: normal;
@@ -19,5 +27,31 @@
 h1{
     font-family: 'Meyrin', sans-serif;
     font-size: 15vw;
-    margin-bottom: 20px;
+    margin: 20px;
+}
+
+p{
+    font-family: 'SnapIt', sans-serif;
+    font-size: 1vw;
+    margin-top: 0;
+}
+
+.btn{
+    font-family: 'SnapIt', sans-serif;
+}
+
+@media screen and (max-width: 425px) {
+    h1{
+        font-family: 'Meyrin', sans-serif;
+        font-size: 30vw;
+        margin: 20px;
+        padding-bottom: 25%;
+    }
+
+    p{
+        font-family: 'SnapIt', sans-serif;
+        font-size: 3vw;
+        margin-top: 0;
+    }
+
 }

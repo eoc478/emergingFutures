@@ -63,8 +63,7 @@ export default function Card({packetTier} ){
         ambientLight.castShadow = true;
         scene.add(ambientLight);
 
-        // White directional light at half intensity shining from the top.
-        const directionalLight = new THREE.DirectionalLight( 0xffffff, 2 );
+        const directionalLight = new THREE.DirectionalLight( 0xffffff, 4 );
         directionalLight.position.set(0, 50, 50);
         directionalLight.castShadow = true;
         scene.add( directionalLight );
