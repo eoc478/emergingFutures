@@ -65,7 +65,11 @@ function App() {
   };
 
   window.addEventListener("wheel", handleScroll);
-  return () => window.removeEventListener("wheel", handleScroll);
+  window.addEventListener("touchmove", handleScroll);
+  return () => {
+    window.removeEventListener("wheel", handleScroll);
+    window.removeEventListener("touchmove", handleScroll);
+  }
 }, [showPacket]);
 
   return (
