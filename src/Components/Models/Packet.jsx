@@ -95,9 +95,9 @@ export default function Packet({packetTier}) {
         });
 
         const animate = () => {
-            // if (modelRef.current) {
-            //     modelRef.current.rotation.y += 0.01;
-            // }
+            if (modelRef.current) {
+                modelRef.current.rotation.y += 0.0001;
+            }
             
             requestAnimationFrame(animate);
             controls.update();
