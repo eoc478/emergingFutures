@@ -3,7 +3,6 @@ import './App.css'
 import Home from "./Components/Home/Home"
 import Card from "./Components/Models/Card"
 import Packet from "./Components/Models/Packet"
-import materials from "./data/cards.json"
 
 function App() {
   const [start, setStart] = useState(false);
@@ -30,7 +29,7 @@ function App() {
         setThump(true);
         setTimeout(() => {
           setShowPacket(false);
-        }, 50); //ms delay
+        }, 30); //ms delay
       }
   };
   
@@ -44,8 +43,8 @@ function App() {
 
   //scrolling logic, adjusted with chatGPT so it would stop bugging out from small taps
   useEffect(() => {
-    const threshold = 300;
-    const cooldown = 200;
+    const threshold = 1000;
+    const cooldown = 100;
 
     const handleScroll = (e) => {
       if (showPacket) return;
@@ -93,11 +92,19 @@ function App() {
           <div className={`packetContainer ${thump ? 'thump' : ''}`}>
             <Packet packetTier={packetTier} />
           </div>
-        )};
-
+        )}
+        
         <div className="cardContainer">
-          <Card packetTier={packetTier}/>
+          {!showPacket && (
+              <Card packetTier={packetTier}/>
+          )}
         </div>
+        <div className="directions">
+          {!showPacket && (
+          <p>swipe up for the next card</p>
+          )}
+        </div>
+        
       </div>
       )}
     </>
