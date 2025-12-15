@@ -2,7 +2,7 @@
   "packets": [
     {
       "tier": 0,
-      "asset": "./assets/packets/EF_packet1.png",
+      "asset": "./assets/packets/kingofthepond.jpg",
       "cards": [
             { "id": "p1c1", "image": "./assets/cards/packet1/EFcard_p1c1.png" },
             { "id": "p1c2", "image": "./assets/cards/packet1/EFcard_p1c2.png" },
@@ -15,7 +15,7 @@
     },
     {
         "tier": 1,
-        "asset": "./assets/packets/EF_packet1.png",
+        "asset": "./assets/packets/mog.jpg",
         "cards": [
             { "id": "p2c1", "image": "./assets/cards/packet2/EFcard_p2c1.png" },
             { "id": "p2c2", "image": "./assets/cards/packet2/EFcard_p2c2.png" },

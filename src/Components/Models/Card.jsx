@@ -51,7 +51,7 @@ export default function Card({packetTier} ){
             1,
             1000
         );
-        camera.position.z = 80;
+        camera.position.z = 60;
 
         //----------------------render----------------------
         const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -70,14 +70,17 @@ export default function Card({packetTier} ){
         scene.add( directionalLight );
 
 
-        //---------------------geometry
+        //---------------------geometry and materials---------------------
         const uvTexture = new THREE.TextureLoader().load(jsonTexture);
         const geometry = new RoundedBoxGeometry(20, 30, .5, 2, 5);
         const material = new THREE.MeshStandardMaterial( { map: uvTexture } );
         const cube = new THREE.Mesh( geometry, material );
+
         uvTexture.colorSpace = THREE.SRGBColorSpace;
+        scene.background = new THREE.Color(0, 0, 0);
         scene.add( cube );
 
+        //---------------------animation---------------------
         const animate = () => {
             // cube.rotation.x += 0.01;
             cube.rotation.y += 0.01;

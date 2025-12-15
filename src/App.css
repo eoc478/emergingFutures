@@ -1,5 +1,6 @@
 body{
   margin: 0;
+  background: black;
 }
 
 .container{
@@ -34,5 +35,26 @@ body{
   }
   100% {
     transform: scale(1);
+  }
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.snapOut {
+  animation: snapUp 0.15s ease-in-out forwards;
+}
+
+@keyframes snapUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 1;
   }
 }

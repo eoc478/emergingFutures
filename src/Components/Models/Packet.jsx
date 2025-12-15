@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import packet from "/models/packet1.gltf?url";
+import packetModel from "/models/packet1.gltf?url";
 import uvText from "/assets/uvtexture.png";
-import mog from "/assets/kingofthepond.jpg";
+import cardData from '../../data/cards.json';
 
 //i had to use chatGPT for this omg nothing would load this 3d model or the material
 export default function Packet({packetTier}) {
@@ -14,9 +14,16 @@ export default function Packet({packetTier}) {
     useEffect(() => {
         const mount = mountRef.current;
 
+        const packet = cardData.packets.find(
+        (p) => p.tier === packetTier
+        ) ?? cardData.packets[5];
+
+        const packetAsset = packet.asset;
+
+
         // Scene
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x222222);
+        scene.background = new THREE.Color(0, 0, 0, 0);
 
         // Camera
         const camera = new THREE.PerspectiveCamera(
@@ -43,17 +50,17 @@ export default function Packet({packetTier}) {
 
         // Load Texture
         const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load(mog, 
-            // onLoad callback
-            () => {
-                console.log('Texture loaded successfully');
-            },
-            // onProgress callback
-            undefined,
-            // onError callback
-            (error) => {
-                console.error('Error loading texture:', error);
-            }
+        const texture = textureLoader.load(packetAsset, 
+            // // onLoad callback
+            // () => {
+            //     console.log('Texture loaded successfully');
+            // },
+            // // onProgress callback
+            // undefined,
+            // // onError callback
+            // (error) => {
+            //     console.error('Error loading texture:', error);
+            // }
         );
 
         texture.flipY = false; // GLTF models usually need this
@@ -63,7 +70,7 @@ export default function Packet({packetTier}) {
 
         // Load GLTF
         const loader = new GLTFLoader();
-        loader.load(packet, (gltf) => {
+        loader.load(packetModel, (gltf) => {
             const model = gltf.scene;
             modelRef.current = model;
             scene.add(model);

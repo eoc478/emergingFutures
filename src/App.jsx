@@ -1,24 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import Home from "./Components/Home/Home"
 import Card from "./Components/Models/Card"
-// import ScrollPackets from "./Components/ScrollPackets"
 import Packet from "./Components/Models/Packet"
 import materials from "./data/cards.json"
-
-// function getRandomPacket(tier){
-//   const tierString = String(tier); //tier: 0, 1, 2, 3, etc. must be converted to numbers
-//   const packets = Object.values(materials).filter(p => p.tier === tierString);
-//   if (packets.length === 0) return null;
-
-//   return packets[Math.floor(Math.random() * packets.length)];
-// }
-
-// function getRandomCard(packet) {
-//   if (!packet) return null;
-//   const cards = packet.cards;
-//   return cards[Math.floor(Math.random() * cards.length)];
-// }
 
 function App() {
   const [start, setStart] = useState(false);
@@ -26,11 +11,11 @@ function App() {
   const [showPacket, setShowPacket] = useState(true);
   const [thump, setThump] = useState(false);
   const [packetTier, setPacketTier] = useState(0);
+  const [snapping, setSnapping] = useState(false);
 
   const maxTaps = 5;
-
-  // const packetData = getRandomPacket(0);
-  // const cardData = getRandomCard(packetData);
+  const scrollAmount = useRef(0);
+  const scrollLock = useRef(false);
 
   const handleStart = () => {
     setStart(true);
@@ -48,7 +33,7 @@ function App() {
         }, 50); //ms delay
       }
   };
-
+  
   //resets every time for the next packet and card
   const nextPacket = () => {
     setPacketTier(prev => prev + 1);
@@ -57,20 +42,45 @@ function App() {
     setThump(false);
   }
 
+  //scrolling logic, adjusted with chatGPT so it would stop bugging out from small taps
   useEffect(() => {
-  const handleScroll = (e) => {
-    if (!showPacket) {
-     nextPacket();
-    }
-  };
+    const threshold = 300;
+    const cooldown = 200;
 
-  window.addEventListener("wheel", handleScroll);
-  window.addEventListener("touchmove", handleScroll);
-  return () => {
-    window.removeEventListener("wheel", handleScroll);
-    window.removeEventListener("touchmove", handleScroll);
-  }
-}, [showPacket]);
+    const handleScroll = (e) => {
+      if (showPacket) return;
+      if (scrollLock.current) return;
+
+      const delta =
+        e.deltaY ||
+        (e.touches ? Math.abs(e.touches[0].clientY) : -20);
+
+      scrollAmount.current += Math.abs(delta);
+
+      if (scrollAmount.current >= threshold) {
+        scrollLock.current = true;
+        scrollAmount.current = 0;
+
+        setSnapping(true);
+        // nextPacket();
+
+        setTimeout(() => {
+          nextPacket();
+          setSnapping(false);
+          scrollLock.current = false;
+          
+        }, cooldown);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll, { passive: true });
+    window.addEventListener("touchmove", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("touchmove", handleScroll);
+    };
+  }, [showPacket]);
 
   return (
     <>
@@ -78,10 +88,10 @@ function App() {
       {!start ? (
         <Home onStart={handleStart} />
       ) : (
-      <div className="container" onClick={handleTap}>
+      <div className={`container ${snapping ? "snapOut" : ""}`} onClick={handleTap}>
         {showPacket && (
           <div className={`packetContainer ${thump ? 'thump' : ''}`}>
-            <Packet />
+            <Packet packetTier={packetTier} />
           </div>
         )};
 
