@@ -50,22 +50,11 @@ export default function Packet({packetTier}) {
 
         // Load Texture
         const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load(packetAsset, 
-            // // onLoad callback
-            // () => {
-            //     console.log('Texture loaded successfully');
-            // },
-            // // onProgress callback
-            // undefined,
-            // // onError callback
-            // (error) => {
-            //     console.error('Error loading texture:', error);
-            // }
-        );
+        const texture = textureLoader.load(packetAsset);
 
         texture.flipY = false; // GLTF models usually need this
         texture.colorSpace = THREE.SRGBColorSpace; // For correct color representation
-        texture.wrapS = THREE.RepeatWrapping; // Uncomment if you need wrapping
+        texture.wrapS = THREE.RepeatWrapping; 
         texture.wrapT = THREE.RepeatWrapping;
 
         // Load GLTF
@@ -106,9 +95,9 @@ export default function Packet({packetTier}) {
         });
 
         const animate = () => {
-            if (modelRef.current) {
-                modelRef.current.rotation.y += 0.01;
-            }
+            // if (modelRef.current) {
+            //     modelRef.current.rotation.y += 0.01;
+            // }
             
             requestAnimationFrame(animate);
             controls.update();
